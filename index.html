@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Flood Early Warning System</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css">
+
+</head>
+
+<body onload="display_kmlmap()">
+    <div class="container-fluid fixed-top" style="height:80px; background-color:pink;">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12" style="">
+                <h1 style="text-align:center; line-height:70px; color:black; font-weight:bold; font-family: CG Omega; letter-spacing: 8px;">
+                    <img src="TLogo.png" style="height:80px; width:80px;border-radius: 50%;" />
+                    <span style="background:violet;height:80px;letter-spacing: 25px;">GHMC</span> Flood Early Warning
+                    System
+                    <img src="CM_KCR.png" style="height:80px; width:80px;border-radius: 50%;" />
+                </h1>
+            </div>
+        </div>
+    </div>
+    <!-- Following is to place the map and the sensor locations info along with graph -->
+    <div class="container-fluid">
+        <div class="row">
+            <!-- <div class="col-lg-2" style="background:pink;">
+                <div style="margin-top:90px;">
+                    <button class="btn btn-primary btn-style">SENSOR 1</button>
+                    <button class="btn btn-primary btn-style">SENSOR 2</button>
+                    <button class="btn btn-primary btn-style">SENSOR 3</button>
+                </div>
+                <div style="margin-top:3px;">
+                    <button class="btn btn-primary btn-style">SENSOR 4</button>
+                    <button class="btn btn-primary btn-style">SENSOR 5</button>
+                    <button class="btn btn-primary btn-style">SENSOR 6</button>
+                </div>
+                <div style="margin-top:3px;">
+                    <button class="btn btn-primary btn-style">SENSOR 7</button>
+                    <button class="btn btn-primary btn-style">SENSOR 8</button>
+                    <button class="btn btn-primary btn-style">SENSOR 9</button>
+                </div>
+                <div style="margin-top:3px;">
+                    <button class="btn btn-primary btn-style">SENSOR 10</button>
+                    <button class="btn btn-primary btn-style">SENSOR 11</button>
+                </div>
+                <div style="margin-top:3px;">
+                    <button class="btn btn-primary btn-style">SENSOR 12</button>
+                    <button class="btn btn-primary btn-style">SENSOR 13</button>
+                </div>
+
+                <div style="margin-top:3px;">
+                    <button class="btn btn-primary btn-style">SENSOR 14</button>
+                    <button class="btn btn-primary btn-style">SENSOR 15</button>
+                </div>
+            </div> -->
+            <!-- Divisions for the respective locations -->
+            <div class="col-lg-3" style="background:pink; background-image: url('flow.jpg');
+            background-size: cover; opacity: 0.7;">
+                <div class="shape" style="margin-top: 150px;"><a>Khairatabad</a></div>
+                <div class="shape" style="margin-top: 150px;"></div>
+                <div class="shape"></div>
+                <div class="shape"></div>
+                <div class="shape"></div>
+                <div class="shape"></div>
+                <div class="shape"></div>
+                <div class="shape"></div>
+                <div class="shape"></div>
+                <div class="shape"></div>
+                <div class="shape"></div>
+                <div class="shape"></div>
+                <div class="shape"></div>
+                <div class="shape"></div>
+                <div class="shape"></div>
+                <div class="shape"></div>
+            </div>
+            <!-- for the map on the web page -->
+            <div class="col-lg-9" id="map_canvas"></div>
+        </div>
+    </div>
+    <div id="displayDiv" style="position: fixed; z-index: 1;display:none;height:100px; width:500px;
+    top:300px; left:500px; border:2px solid red; background:cyan; color:black;">This
+        is opened in response to link chosen</div>
+    <!-- Bottom Navigation Code -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-bottom" style="letter-spacing: 5px;height:30px;">
+        <a class="navbar-brand" href="#">GHMCFEWS</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="status.html">Status</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contacts</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-default" id="about" href="#">About</a>
+                </li>
+            </ul>
+        </div>
+        <!-- <span class="navbar-text "><b>
+                    &copy; Government of Telangana</b>
+            </span> -->
+    </nav>
+
+    <!-- The following is the code to create the modal dialog when about link is clicked -->
+    <div id="simpleModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="closeBtn">
+                    &times;
+                </span>
+                <h2>About TSFEMS</h2>
+            </div>
+            <div class="modal-body">
+                <p>The GHMC Flood Early Warning System measures and monitors water levels along the Khairatabad zone
+                    within hyderabad on a real-time basis in order to help in for area residents of potentially
+                    dangerous weather conditions.
+
+                    The GHMCFEWS also provides historical rainfall data and information about past flooding events.
+
+                    The System relies on the different stations strategically placed throughout the zone. The
+                    individual station contain sensors that transmit valuable data during rain events.
+
+                    Reliable rainfall amounts and water level data can help emergency management officials make
+                    critical decisions that ultimately aid in reducing the risk of property damage, injuries and loss
+                    of life.
+
+                    The topographic elevation data, also known as Digital Eleation Model (DEM) is the most
+                    important input data to any urban flood modal and the quality of th DEM directly
+                    influence the result of the model.
+                    As a prerequisite for the construction of the flood model, a high-resolution digital
+                    elevation model (DEM) is mandatory.
+                    This DEM would be generated from high-resolution multispectral stereo satellite data
+                    (Worldview - 03).
+                </p>
+            </div>
+            <div class="modal-footer">
+                <h6>&copy;Government of Telangana</h6>
+            </div>
+
+        </div>
+    </div>
+    <!-- Modal Dialog code ends here for About Link -->
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <!-- <script src="https://canvasjs.com/assets/script/canvasjs.min.js"> </script> -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCD654VoREWfT6kIKZcAXfgOWJ6DYMXDPc&sensor=false&region=IN"></script>
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="scripts.js"></script>
+
+</body>
+
+</html>

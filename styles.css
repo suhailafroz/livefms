@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css?family=Akronim&display=swap');
+#map_canvas {
+    height: 550px;    
+    margin-top:75px;
+}
+
+div.shape{
+    text-align: center;
+    background-color: rgba(237, 11, 245, 0.918);
+    background:transparent;
+    border: 3px solid rgb(247, 244, 244);
+    height: 30px;
+    width: 120px;
+    float:left;
+    border-radius: 30%;
+    margin-left:30px;
+    margin-top:5px;
+    color:rgb(244, 238, 247);
+    letter-spacing: 3px;
+    font-family: 'Akronim', cursive;
+    background: linear-gradient(left, transparent 0%,#fff 50%,transparent 100%);
+}
+div.shape:hover {
+    background-color: rgba(233, 76, 76, 0.945);
+    background: linear-gradient(left, transparent 0%,#fff 50%,transparent 100%);
+    color:rgb(253, 253, 17);
+}
+
+div.shape a {
+    text-decoration: none;
+    display: block;
+    line-height: 20px;
+    border-radius: 50%;
+    
+    
+}
+.modal{
+    display:none;
+    position:fixed;
+    z-index:1;
+    left:0;
+    top:0;
+    height:50%;
+    width:50%;
+    overflow:auto;
+    background-color:rgba(0,0,0,0.5);
+}
+
+.modal-content{
+    background-color:#f4f4f4;
+    margin:5% auto;
+    padding:15px;
+    width:50%;
+    box-shadow:0 5px 8px 0 rgba(0,0,0,0.2),0 7px 20px 0 rgba(0,0,0,0.17);
+    animation-name:modalopen;
+    animation-duration:3s;
+}
+.modal-header h2, .modal-footer h6{
+    margin:0;
+}
+.modal-header{
+    background:rgba(156, 42, 122);
+    padding:15px;
+    color:white;
+}
+.modal-body{
+    padding:10px 20px;
+}
+.modal-body p{
+    text-align:justify;
+    font-family:CG Omega;
+    font-size:16px;
+    color:green;
+    letter-spacing: 2px;
+}
+.modal-footer {
+    background:rgba(156, 42, 122);
+    padding:10px;
+    color:#fff;
+    text-align:center;
+}
+.closeBtn{
+    color:#ccc;
+    float:right;
+    font-size:30px;
+    color:#fff;
+}
+.closeBtn:hover, .closeBtn:focus{
+    color:#000;
+    text-decoration: none;
+    cursor:pointer;
+}
+@keyframes modalopen{
+    from{opacity:0}
+    to{opacity:1}
+}
+
+#card1 {
+    position: fixed;
+    top: 250px;
+    left: 150px;
+}
+
+#card2 {
+    position: fixed;
+    top: 250px;
+    left: 600px;
+    margin-left: 50px;
+}

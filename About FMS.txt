@@ -1,0 +1,33 @@
+The GHMC Flood Early Warning System measures and monitors water levels along the khairatabad zone within hyderabad on a real-time basis in order to help infor area residents of potentially dangerous weather conditions.
+
+The GHMCFEWS also provides historical rainfall data and information about past flooding events.
+
+The System relies on the different stations strategically placed throughout the zone.  The individual station contain sensors that transmit valuable data during rain events.  
+
+Reliable rainfall amounts and water level data can help emergency management officials make critical decisions that ultimately aid in reducing the risk of property damage, injuries and loss of life.
+
+The topographic elevation data, also known as Digital Eleation Model (DEM) is the most
+                    important input data to any urban flood modal and the quality of th DEM directly
+                    influence the result of the model.
+                    As a prerequisite for the construction of the flood model, a high-resolution digital
+                    elevation model (DEM) is mandatory.
+                    This DEM would be generated from high-resolution multispectral stereo satellite data
+                    (Worldview - 03).
+
+ITE & C Department, Government of Telangana has conceptualized a project to develop an
+                    early warning system for urban flooding in Hyderabad.
+                    The main objective of this asssignment is the preparation of a floodmodel and implement
+                    it along with a dashboard.
+                    Modelling of urban flooding is important in order to reproduce the runoff behaviour and
+                    simulate the flood depth.
+                    The resuts of the simulation also provide a clear understanding of the drainage system.
+                    Thus, information acquired from the simulation results helps the engineers and planners
+                    to take necessary steps for the possible renovations and improvements of the hydraulic
+                    capacity.
+                    The topographic elevation data, also known as Digital Eleation Model (DEM) is the most
+                    important input data to any urban flood modal and the quality of th DEM directly
+                    influence the result of the model.
+                    As a prerequisite for the construction of the flood model, a high-resolution digital
+                    elevation model (DEM) is mandatory.
+                    This DEM would be generated from high-resolution multispectral stereo satellite data
+                    (Worldview - 03).
